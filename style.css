@@ -1,0 +1,74 @@
+body {
+  font-family: Arial, sans-serif; /* A more modern font */
+  margin: 0;
+  padding: 20px;
+  box-sizing: border-box;
+  background-color: #f4f4f4; /* Light background color */
+}
+
+.siteTitle {
+  text-align: center;
+  color: #333; /* Dark grey color for the title */
+}
+
+.resultsContainer {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* Creates 3 columns */
+  gap: 20px; /* Space between grid items */
+  padding: 20px;
+  margin-top: 20px;
+}
+
+.result {
+  background-color: #fff; /* White background for each result */
+  border: 1px solid #ddd; /* Light border for each result */
+  border-radius: 8px; /* Rounded corners for polish */
+  overflow: hidden; /* Ensures the content fits within the borders */
+}
+
+.result:hover {
+  cursor: pointer;
+}
+
+.coverArt {
+  /* Remove the fixed height */
+  background-color: #bbb; /* Placeholder background color, can be removed if actual images are used */
+  width: 100%; /* Cover the full width of the result */
+  position: relative; /* Needed for absolute positioning of the image */
+}
+
+.coverArt::before {
+  content: "";
+  display: block;
+  padding-top: 150%; /* Adjust this value based on the desired aspect ratio */
+  /* For a 2:3 aspect ratio, padding-top: (3/2) * 100% = 150% */
+}
+
+.coverArt img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Ensures the image covers the space without distortion */
+}
+
+.movieTitle {
+  padding: 10px;
+  font-size: 16px; /* Readable font size */
+  text-align: center;
+  color: #333; /* Dark grey color for the movie titles */
+}
+
+/*   MEDIA QUERIES */
+@media (max-width: 600px) {
+  .resultsContainer {
+    grid-template-columns: 1fr; /* 1 column for small screens */
+  }
+}
+
+@media (min-width: 601px) and (max-width: 900px) {
+  .resultsContainer {
+    grid-template-columns: repeat(2, 1fr); /* 2 columns for medium screens */
+  }
+}
