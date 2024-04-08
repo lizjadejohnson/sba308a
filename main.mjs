@@ -52,35 +52,23 @@ function showMovieDetails(movie) {
 // Start button event listener
 document.addEventListener("DOMContentLoaded", () => {
   document.querySelector(".startBtn").addEventListener("click", function () {
-    const options = [
-      "love",
-      "hate",
-      "sadness",
-      "happiness",
-      "fun",
-      "confusion",
-      "paranoia",
-      "hope",
-      "luck",
-    ];
-    let userMood = prompt(
-      "What are you in the mood for? Options: " +
-        options.map((option) => option.toUpperCase()).join(", ")
-    );
+    const moodSelect = document.getElementById("moodSelect");
+    const selectedMood = moodSelect.value;
 
-    if (userMood && options.includes(userMood.trim().toLowerCase())) {
-      userMood = userMood.trim().toLowerCase();
+    if (selectedMood) {
+      const moodOption = moodSelect.options[moodSelect.selectedIndex];
+      const userMood = moodOption.text.toUpperCase();
       document.querySelector(
         ".siteTitle"
-      ).innerText = `IN THE MOOD FOR ${userMood.toUpperCase()}`;
+      ).innerText = `IN THE MOOD FOR ${userMood}`;
 
-      // Correctly passing the displayMovies as the callback function
-      getFilms(moods[userMood], displayMovies);
+      if (moods[selectedMood]) {
+        getFilms(moods[selectedMood], displayMovies);
+      } else {
+        alert("No movies found for selected mood.");
+      }
     } else {
-      alert(
-        "Please choose from the list: " +
-          options.map((option) => option.toUpperCase()).join(", ")
-      );
+      alert("Please select a mood.");
     }
   });
 });

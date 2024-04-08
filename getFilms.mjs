@@ -17,7 +17,7 @@ export async function getFilms(moodIDs, callback) {
 
   try {
     const response = await fetch(
-      `https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&page=1&sort_by=popularity.desc&vote_average.gte=6&vote_count.gte=1000&with_keywords=${keywordIDs}`,
+      `https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&page=1&sort_by=popularity.desc&vote_average.gte=6&vote_count.gte=800&with_keywords=${keywordIDs}`,
       options
     );
     const data = await response.json();

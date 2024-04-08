@@ -12,7 +12,8 @@ body {
   color: #333; /* Dark grey color for the title */
 }
 
-.button-container {
+.button-container,
+.optionContainer {
   display: flex;
   justify-content: center;
   width: 100%;
