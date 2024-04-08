@@ -1,3 +1,4 @@
+// Importing getFilms function from getFilms.mjs
 import { getFilms } from "./getFilms.mjs";
 console.log(getFilms); // Should log the function if import was successful
 
@@ -49,10 +50,10 @@ function showMovieDetails(movie) {
   popOutCard.style.display = "block"; // Show the pop-out card
 }
 
-// Start button event listener
+// Event listener for the "Start" button
 document.addEventListener("DOMContentLoaded", () => {
   document.querySelector(".startBtn").addEventListener("click", function () {
-    const moodSelect = document.getElementById("moodSelect");
+    const moodSelect = document.querySelector(".custom-select select");
     const selectedMood = moodSelect.value;
 
     if (selectedMood) {

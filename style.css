@@ -25,8 +25,7 @@ body {
   appearance: none;
   -webkit-appearance: none;
   font-size: 18px;
-  padding: 5px;
-  padding-right: 25px;
+  padding: 8px;
   background-color: #b9b8ff;
   border: 1px solid #c4d1eb;
   border-radius: 5px;
@@ -34,6 +33,7 @@ body {
   cursor: pointer;
   outline: none;
   box-shadow: 3px 3px 2px 0px #e2e2e2;
+  text-align: center;
 }
 
 .startBtn,
