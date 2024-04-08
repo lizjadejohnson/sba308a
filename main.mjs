@@ -1,8 +1,38 @@
-//---------------Main App functions etc---------------
+import { getFilms } from "./getFilms.mjs";
+console.log(getFilms); // Should log the function if import was successful
 
-// START BUTTON EVENT LISTENER:
+// Mood keywords object with associated keyword IDs
+const moods = {
+  love: [9673, 9840, 157303, 158718, 7879],
+  hate: [296754, 202371, 312898, 6259, 10714],
+  sadness: [3737, 697, 9872, 9957, 894, 2754],
+  happiness: [325782, 277029, 303966, 315304, 325810],
+  fun: [320420, 259376, 324285, 322268, 162487, 9253],
+  confusion: [286954, 10705, 12570, 11469, 1453],
+  paranoia: [2340, 201456, 10085, 1523],
+  hope: [3929, 191740, 258409, 325824],
+  luck: [157904, 4258, 8739, 208263, 195690, 395],
+};
 
-document.addEventListener("DOMContentLoaded", (event) => {
+// Function to display movies in the HTML
+function displayMovies(selectedMovies) {
+  console.log("Movies to display:", selectedMovies); // Check if movies are passed correctly
+  selectedMovies.forEach((movie, index) => {
+    const posterPath = `https://image.tmdb.org/t/p/original${movie.poster_path}`;
+    const title = movie.original_title;
+
+    const coverArtElement = document
+      .getElementById(`coverArt${index + 1}`)
+      .querySelector("img");
+    const movieTitleElement = document.getElementById(`movieTitle${index + 1}`);
+
+    coverArtElement.src = posterPath;
+    movieTitleElement.textContent = title;
+  });
+}
+
+// Start button event listener
+document.addEventListener("DOMContentLoaded", () => {
   document.querySelector(".startBtn").addEventListener("click", function () {
     const options = [
       "love",
@@ -19,15 +49,16 @@ document.addEventListener("DOMContentLoaded", (event) => {
       "What are you in the mood for? Options: " +
         options.map((option) => option.toUpperCase()).join(", ")
     );
-    // Check if the user input is not null and is one of the options
+
     if (userMood && options.includes(userMood.trim().toLowerCase())) {
       userMood = userMood.trim().toLowerCase();
-      // Display in uppercase
       document.querySelector(
         ".siteTitle"
       ).innerText = `IN THE MOOD FOR ${userMood.toUpperCase()}`;
+
+      // Correctly passing the displayMovies as the callback function
+      getFilms(moods[userMood], displayMovies);
     } else {
-      // Inform the user their choice was not in the list, display options in uppercase for consistency
       alert(
         "Please choose from the list: " +
           options.map((option) => option.toUpperCase()).join(", ")
@@ -35,57 +66,3 @@ document.addEventListener("DOMContentLoaded", (event) => {
     }
   });
 });
-
-//Mood keywords object:
-const moods = {
-  love: ["love", "romance", "first love", "lgbt", "secret love"],
-  hate: [
-    "hate",
-    "abuse",
-    "aggressive",
-    "violence",
-    "psychopath",
-    "serial killer",
-  ],
-  sadness: [
-    "dying and death",
-    "loss of loved one",
-    "grief",
-    "loneliness",
-    "depression",
-    "trauma",
-  ],
-  happiness: ["cheer", "joy", "exuberance", "happy", "euphoric"],
-  fun: [
-    "hilarious",
-    "playful",
-    "funny",
-    "comedy",
-    "wisecrack humor",
-    "slapstick comedy",
-  ],
-  confusion: ["ambiguity", "confusion", "whodunit", "memory loss", "amnesia"],
-  paranoia: ["paranoia", "betrayal", "obsession"],
-  hope: ["hope", "friendship", "revolution"],
-  luck: [
-    "luck",
-    "lucky",
-    "lottery",
-    "jackpot",
-    "winning lottery",
-    "sudden wealth",
-    "wealth",
-    "money",
-    "wealthy",
-  ],
-};
-
-// console.log(moods.confusion[0]);
-
-// ---------------Import Modules---------------
-
-// import getFilms from "./getFilms.mjs";
-
-// ---------------[Initialized Functions()]---------------
-
-// getFilms(moods.userMood);
