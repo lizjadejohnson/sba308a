@@ -1,5 +1,5 @@
 body {
-  font-family: Arial, sans-serif; /* A more modern font */
+  font-family: "Playfair Display", serif;
   margin: 0;
   padding: 20px;
   box-sizing: border-box;
@@ -7,22 +7,38 @@ body {
 }
 
 .siteTitle {
-  font-family: "Playfair Display", serif;
   text-align: center;
   color: #333; /* Dark grey color for the title */
 }
 
-.button-container,
-.optionContainer {
+.custom-select,
+.button-container {
   display: flex;
   justify-content: center;
-  width: 100%;
-  margin-top: 20px;
+  align-items: center;
+  margin-bottom: 20px; /* Add some space between the elements */
+}
+
+.custom-select select {
+  text-align: center;
+  font-family: "Playfair Display", serif;
+  appearance: none;
+  -webkit-appearance: none;
+  font-size: 18px;
+  padding: 5px;
+  padding-right: 25px;
+  background-color: #b9b8ff;
+  border: 1px solid #c4d1eb;
+  border-radius: 5px;
+  color: #000000;
+  cursor: pointer;
+  outline: none;
+  box-shadow: 3px 3px 2px 0px #e2e2e2;
 }
 
 .startBtn,
 .closeBtn {
-  font-family: Roboto, sans-serif;
+  font-family: "Playfair Display", serif;
   font-weight: 0;
   font-size: 14px;
   color: #fff;
@@ -96,7 +112,6 @@ body {
 }
 
 .movieTitle {
-  font-family: "Playfair Display", serif;
   padding: 10px;
   font-size: 16px; /* Readable font size */
   text-align: center;
@@ -137,7 +152,7 @@ body {
 .popOutMovieTitle,
 .popOutMovieOverview,
 .popOutMovieRating {
-  font-family: Roboto, sans-serif;
+  font-family: "Playfair Display", serif;
   width: 80%; /* Ensures text doesn't overflow the card's padding */
   padding: 0 10px; /* Adds padding to the sides for text */
   box-sizing: border-box;
