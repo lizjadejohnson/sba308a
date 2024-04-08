@@ -16,19 +16,37 @@ const moods = {
 
 // Function to display movies in the HTML
 function displayMovies(selectedMovies) {
-  console.log("Movies to display:", selectedMovies); // Check if movies are passed correctly
   selectedMovies.forEach((movie, index) => {
-    const posterPath = `https://image.tmdb.org/t/p/original${movie.poster_path}`;
-    const title = movie.original_title;
+    // Assuming each `.result` div has an id="resultX" where X is the index+1
+    const resultElement = document.getElementById(`result${index + 1}`);
 
-    const coverArtElement = document
-      .getElementById(`coverArt${index + 1}`)
-      .querySelector("img");
-    const movieTitleElement = document.getElementById(`movieTitle${index + 1}`);
+    // Update image and title inside the result div
+    const coverArtElement = resultElement.querySelector(".coverArt img");
+    const movieTitleElement = resultElement.querySelector(".movieTitle");
 
-    coverArtElement.src = posterPath;
-    movieTitleElement.textContent = title;
+    coverArtElement.src = `https://image.tmdb.org/t/p/original${movie.poster_path}`;
+    movieTitleElement.textContent = movie.original_title;
+
+    // Attach a click event listener to the entire `.result` div
+    resultElement.addEventListener("click", () => showMovieDetails(movie));
   });
+}
+
+function showMovieDetails(movie) {
+  // Assuming `popOutCard` is already in your HTML with the style set to `display: none;` initially
+  const popOutCard = document.getElementById("popOutCard");
+  // Make sure to query for elements within `popOutCard` correctly
+  popOutCard.querySelector(
+    ".popOutCoverArt img"
+  ).src = `https://image.tmdb.org/t/p/original${movie.poster_path}`;
+  popOutCard.querySelector(".popOutMovieTitle").textContent =
+    movie.original_title;
+  popOutCard.querySelector(".popOutMovieOverview").textContent = movie.overview;
+  popOutCard.querySelector(
+    ".popOutMovieRating"
+  ).textContent = `Rating: ${movie.vote_average.toFixed(1)}/10`; // Limiting to one decimal point
+
+  popOutCard.style.display = "block"; // Show the pop-out card
 }
 
 // Start button event listener

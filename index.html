@@ -5,13 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>In The Mood For Movies</title>
+
+    <link rel="stylesheet" href="style.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="style.css" />
   </head>
   <body>
     <h1 class="siteTitle">IN THE MOOD FOR...</h1>
@@ -20,49 +21,62 @@
     </div>
 
     <div class="resultsContainer">
-      <div class="result">
+      <div class="result" id="result1">
         <div class="coverArt" id="coverArt1">
           <img src="./moodforlove.jpg" />
         </div>
         <div class="movieTitle" id="movieTitle1">In the Mood for Love</div>
       </div>
-      <div class="result">
+      <div class="result" id="result2">
         <div class="coverArt" id="coverArt2"><img src="./10things.jpg" /></div>
         <div class="movieTitle" id="movieTitle2">
           10 Things I Hate About You
         </div>
       </div>
-      <div class="result">
+      <div class="result" id="result3">
         <div class="coverArt" id="coverArt3"><img src="./sadness.jpg" /></div>
         <div class="movieTitle" id="movieTitle3">Belladonna of Sadness</div>
       </div>
-      <div class="result">
+      <div class="result" id="result4">
         <div class="coverArt" id="coverArt4"><img src="./happiness.jpg" /></div>
         <div class="movieTitle" id="movieTitle4">Happiness</div>
       </div>
-      <div class="result">
+      <div class="result" id="result5">
         <div class="coverArt" id="coverArt5"><img src="./fun.jpg" /></div>
         <div class="movieTitle" id="movieTitle5">
           Girls Just Want To Have Fun
         </div>
       </div>
-      <div class="result">
+      <div class="result" id="result6">
         <div class="coverArt" id="coverArt6"><img src="./confusion.jpg" /></div>
         <div class="movieTitle" id="movieTitle6">Dazed and confused</div>
       </div>
-      <div class="result">
+      <div class="result" id="result7">
         <div class="coverArt" id="coverArt7"><img src="./paranoid.jpg" /></div>
         <div class="movieTitle" id="movieTitle7">Paranoid</div>
       </div>
-      <div class="result">
+      <div class="result" id="result8">
         <div class="coverArt" id="coverArt8"><img src="./hope.jpg" /></div>
         <div class="movieTitle" id="movieTitle8">Hope floats</div>
       </div>
-      <div class="result">
+      <div class="result" id="result9">
         <div class="coverArt" id="coverArt9"><img src="./lucky.jpg" /></div>
         <div class="movieTitle" id="movieTitle9">Lucky</div>
       </div>
     </div>
+    <div id="popOutCard" class="popOutCard" style="display: none">
+      <div class="popOutCoverArt"><img src="" alt="Movie cover art" /></div>
+      <h2 class="popOutMovieTitle"></h2>
+      <p class="popOutMovieOverview"></p>
+      <p class="popOutMovieRating"></p>
+      <button
+        class="closeBtn"
+        onclick="document.getElementById('popOutCard').style.display='none'"
+      >
+        Close
+      </button>
+    </div>
+
     <script type="module" src="main.mjs"></script>
   </body>
 </html>
